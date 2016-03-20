@@ -1,0 +1,216 @@
+body {
+    background-color: rgba(25, 25, 25, 0.9);
+    font: 20px cursive;
+}
+#wrapper {
+    min-width: 350px;
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    color: chocolate;
+}
+h4 {
+    margin: 2px;
+}
+
+input {
+    font-size: 20px;
+}
+
+a {
+    margin: 0 5px;
+    padding: 0 5px;
+    text-decoration: none;
+    border: 1px groove darkgrey;
+    border-radius: 5px;
+    background-color: rgba(25, 25, 25, 0.5);
+    color: peru;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+}
+
+a:visited {
+    color: peru;
+    font-size: 16px;
+    outline: none;
+}
+
+a:hover {
+    background-color: peru;
+    border-color: rgba(25, 25, 25, 0.5);
+    color: rgba(25, 25, 25, 0.5);
+    font-size: 16px;
+    outline: none;
+}
+
+:focus{
+    outline: none;
+}
+
+button {
+    margin: 5px;
+    background-color: rgba(25, 25, 25, 0.5);
+    color: peru;
+    vertical-align: baseline;
+    border: 1px groove darkgrey;
+    border-radius: 5px;
+    font: 16px cursive;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: peru;
+    color: rgba(25, 25, 25, 0.5);
+}
+button.fa-edit {
+    margin: 0;
+}
+
+#main-panel, #login-panel, #signup-panel {
+    padding: 5px 10px;
+}
+
+.message {
+    color: red;
+    font-size: 16px;
+}
+
+#edit-panel, #rename-panel, #share-panel {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    padding: 30px 0;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    background: rgba(25, 25, 25, 0.8);
+}
+
+#rename-panel, #share-panel {
+    top: 25%;
+    transition: opacity 1s ease-in;
+}
+
+.logout-div {
+    text-align: right;
+}
+
+.done {
+    opacity: 0;
+}
+
+.cancel {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    right: 0;
+    color: darkgrey;
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+}
+
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+#tasks-div {
+    margin: 30px 0;
+    text-align: left;
+}
+#task-list {
+    margin: 0;
+    padding: 10px 0;
+    border-top: 1px dotted grey;
+    list-style-type: none;
+}
+#filters-div {
+    margin-bottom: 30px;
+}
+
+.text-field {
+    text-align: right;
+    padding-right: 20px;
+}
+input[type=text], [type=password], [type=email] {
+    width: 60%;
+}
+
+label[for='check-all'], label[for='check-all'] .fa-check-square-o {
+    color: gray;
+}
+
+#check-text{
+    color: gray;
+    font-size: initial;
+}
+
+.task-title {
+    /*font-size: 20px;*/
+    width: 70%;
+}
+
+.task {
+    position: relative;
+    overflow: hidden;
+    left: 0;
+    padding: 5px 0;
+    font-size: 20px;
+    border-bottom: 1px dashed darkslategrey;
+    transition: all 1.5s linear;
+}
+
+.task.remove {
+    overflow: hidden;
+    opacity: 0;
+    font-size: 0;
+    left: 50%;
+}
+.task-checkbox {
+    position: absolute;
+    float: left;
+    top: 50%;
+    margin-top: -0.5em
+}
+.task-label {
+    float: left;
+    margin: 7px 40px 0 30px;
+    word-break: break-all;
+}
+.task-edit {
+    position: absolute;
+    right: 0;
+    float: right;
+    top: 50%;
+    margin-top: -0.8em;
+}
+
+input[type=checkbox]  {
+    display: none;
+}
+
+.checked{
+    text-decoration: line-through;
+    color: darkgoldenrod;
+}
+.fa-check-square-o {
+    color: darkgoldenrod;
+}
+
+.shared {
+    padding: 0 5px;
+    border: 1px dashed forestgreen;
+    border-radius: 5px;
+    font-weight: lighter;
+    color: goldenrod;
+    font-size: 16px;
+}
+
+.completed {
+    margin: 0;
+    text-decoration: line-through;
+}

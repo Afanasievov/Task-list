@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Parse App</title>
+    <meta name="description" content="My Parse App">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css">
+
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/jquery-2.2.0.min.js"></script>
+    <script src="js/lib/hammer.min.js"></script>
+    <script src="js/lib/jquery.hammer.js"></script>
+    <script src="js/lib/parse.js"></script>
+    <script src="js/lib/backbone-min.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+</div>
+
+
+<script type="text/template" id="login-panel-template">
+
+    <h4>Authorization</h4>
+    <form id="login-form">
+        <p class="text-field"><label><i class="fa fa-user"></i> Login  <input class="login" type="text"></label>
+        <p class="text-field"><label><i class="fa fa-lock"></i> Password <input class="password" type="password"></label>
+        <p class="message"></p>
+        <p> <button><i class="fa fa-sign-out"></i> Log in</button>
+    </form>
+    <a href="#signup" id="to-signup"><i class="fa fa-user-plus"></i> I don't have an account</a>
+
+</script>
+
+
+<script type="text/template" id="signup-panel-template">
+
+    <h4>Authorization</h4>
+    <form id="signup-form">
+        <p class="text-field"><label><i class="fa fa-user"></i> Login <input class="login" type="text"></label>
+        <p class="text-field"><label><i class="fa fa-lock"></i> Password <input class="password" type="password"></label>
+        <p class="text-field"><label><i class="fa fa-envelope-o"></i> Email <input class="email" type="email"></label>
+        <p class="message"></p>
+        <p><button><i class="fa fa-user-plus"></i> Sign in</button>
+    </form>
+    <a href="#login" id="to-login"><i class="fa fa-sign-out"></i> I already have an account</a>
+
+</script>
+
+<script type="text/template" id="main-template">
+
+        <div class="logout-div">
+            <span id="current-user"></span>
+            <button id="logout"><i class="fa fa-sign-out"></i> Log Out</button>
+        </div>
+
+        <h3>Task-list</h3>
+
+        <form id="add-task">
+            <input type="text" class="task-title" maxlength="150" placeholder="New Task">
+            <button><i class="fa fa-plus"></i></button>
+            <p class="message"></p>
+        </form>
+
+        <div id="tasks-div">
+            <label for="check-all"><i class="fa fa-square-o"></i>
+                <input type="checkbox" id="check-all"/>
+                <span id="check-text">Check all</span>
+            </label>
+
+            <ul id="task-list">
+            </ul>
+
+        </div>
+
+        <div id="filters-div">
+            <button id="completed">Completed</button>
+            <button id="incompleted">Incompleted</button>
+            <button id="all-user-tasks">All tasks</button>
+            <p><button id="clear-tasklist">Delete checked</button>
+        </div>
+
+</script>
+
+<script type="text/template" id="task-template">
+
+        <div class="task-checkbox">
+            <i class=<%= complete ? "'fa fa-check-square-o'" : "'fa fa-square-o'" %>></i>
+            <input type="checkbox" <%= complete ? "checked" : "" %>>
+        </div>
+        <div class="task-label">
+            <span class=<%= shared ? "shared" : "" %>><%= shared ? "shared" : "" %></span>
+            <span class=<%= complete ? "checked" : "" %>><%= title %></span>
+        </div>
+        <div class="task-edit">
+            <button class="fa fa-edit"></button>
+        </div>
+
+</script>
+
+<script type="text/template" id="edit-panel-template">
+
+    <p>Edit the task:</p>
+    <button id="share" class="fa fa-share-alt"> Share</button>
+    <button id="rename" class="fa fa-pencil-square-o"> Rename</button>
+    <button id="delete" class="fa fa-trash"> Delete</button>
+    <button class="cancel fa fa-close"></button>
+
+</script>
+
+<script type="text/template" id="rename-template">
+
+    <p>New Task Title:</p>
+    <form id="rename-task">
+        <input type="text" maxlength="80" placeholder="New Title">
+        <button><i class="fa fa-pencil-square-o"></i></button>
+        <p class="message"></p>
+    </form>
+    <button class="cancel fa fa-close"></button>
+
+</script>
+
+<script type="text/template" id="share-template">
+
+    <p>Share task:</p>
+    <form id="share-task">
+        <input type="text" maxlength="80" placeholder="Email to share with">
+        <button><i class="fa fa-share-alt"></i></button>
+        <p class="message"></p>
+    </form>
+    <button class="cancel fa fa-close"></button>
+
+</script>
+
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

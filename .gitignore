@@ -1,0 +1,16 @@
+.git/
+.idea/
+
+// cordova build
+APK/
+
+css/reset.css
+font-awesome-4.5.0/
+
+js/lib/
+js/lib/backbone.min.js
+js/lib/hammer.min.js
+js/lib/jquery-2.2.0.min.js
+js/lib/jquery.hammer.js
+js/lib/parse.js
+js/lib/underscore.min.js
