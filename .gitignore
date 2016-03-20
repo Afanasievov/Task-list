@@ -1,0 +1,13 @@
+.git/
+.idea/
+
+source/assets/css/reset.css
+source/assets/css/font-awesome-4.5.0/
+
+source/lib/backbone.js
+source/lib/hammer.min.js
+source/lib/jquery.js
+source/lib/jquery.hammer.js
+source/lib/parse.js
+source/lib/require.js
+source/lib/underscore.js

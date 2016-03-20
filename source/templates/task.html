@@ -1,0 +1,11 @@
+<div class="task-checkbox">
+    <i class=<%= complete ? "'fa fa-check-square-o'" : "'fa fa-square-o'" %>></i>
+    <input type="checkbox" <%= complete ? "checked" : "" %>>
+</div>
+<div class="task-label">
+    <span class=<%= shared ? "shared" : "" %>><%= shared ? "shared" : "" %></span>
+    <span class=<%= complete ? "checked" : "" %>><%= title %></span>
+</div>
+<div class="task-edit">
+    <button class="fa fa-edit"></button>
+</div>
