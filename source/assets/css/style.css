@@ -4,6 +4,7 @@ body {
 }
 #wrapper {
     min-width: 350px;
+    max-width: 900px;
     margin: auto;
     overflow: hidden;
     text-align: center;
@@ -149,6 +150,7 @@ label[for='check-all'], label[for='check-all'] .fa-check-square-o {
 }
 
 .task-title {
+    /*font-size: 20px;*/
     width: 70%;
 }
 

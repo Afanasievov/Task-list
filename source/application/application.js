@@ -84,10 +84,7 @@ define(['collections/tasksCollection',
                     .append(this.instances.viewEditTask.el)
                     .children()
                     .first()
-                    .addClass('disabled')
-                    .end()
-                    .last()
-                    .width($(this.elId).width());
+                    .addClass('disabled');
             },
 
             removeEditPanel: function () {
@@ -106,7 +103,6 @@ define(['collections/tasksCollection',
                     .end()
                     .append(element);
                 $(element)
-                    .width($(this.elId).width())
                     .find('input')
                     .focus();
             },
