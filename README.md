@@ -1,8 +1,8 @@
 Task-list on base on backbone.js and cloud-service parse.com
 
-Features:\n
------------
--Sign up (username, password and email are required)
+Features:
+---------
+<div>-Sign up (username, password and email are required)</div>
 -Log in (username, password are required)
 
 -Add a task (max. length is 150 symbols)
