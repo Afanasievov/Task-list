@@ -1,4 +1,8 @@
-define(['backbone', 'text!templates/edit_task.html'], function (Backbone, editTaskTemplate) {
+define(['backbone',
+    'services/parse.service',
+    'text!templates/edit_task.html'
+],
+    function (Backbone, ParseService, editTaskTemplate) {
 
     var ViewEditTask = Backbone.View.extend({
         id: 'edit-panel',
@@ -25,8 +29,7 @@ define(['backbone', 'text!templates/edit_task.html'], function (Backbone, editTa
         },
 
         delete: function () {
-            App.currentTask.destroy();
-            App.removeEditPanel();
+            ParseService.deleteTask();
         },
 
         rename: function () {

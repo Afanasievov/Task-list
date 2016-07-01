@@ -34,6 +34,14 @@ define(['parse'], function (Parse) {
             });
         },
 
+        logOut: function () {
+            Parse.User.logOut();
+        },
+
+        getUserName: function () {
+            return Parse.User.current().get('username')
+        },
+
         queryTask: function () {
             var queryTask = new Parse.Query('Task');
             queryTask.equalTo('owners', Parse.User.current());
@@ -47,6 +55,61 @@ define(['parse'], function (Parse) {
                     App.instances.viewMainPanel.getDataError(error.message);
                 }
             }));
+        },
+
+        addTask: function (newTask, newTaskTitle) {
+
+            newTask.save({title: newTaskTitle}, {
+                success: function () {
+                    relation = newTask.relation('owners');
+                    relation.add(Parse.User.current());
+                    newTask.save();
+                    App.instances.viewMainPanel.addingSuccess(newTask);
+                },
+                error: function (error, response) {
+                    App.instances.viewMainPanel.addingError(response.message);
+                }
+            })
+        },
+
+        saveTask: function (newTaskTitle) {
+            App.currentTask.save({title: newTaskTitle}, {
+                success: function () {
+                    App.instances.viewRenameTask.success();
+                },
+                error: function (model, error) {
+                    App.instances.viewRenameTask.error(error.message);
+                }
+            });
+        },
+
+        shareTask: function (emailShare) {
+            var queryUser = new Parse.Query('User');
+            queryUser.equalTo('email', emailShare);
+            queryUser.first(({
+                success: function (result) {
+                    if (!result) {
+                        App.instances.viewShareTask.showEmailErr();
+                        return;
+                    }
+                    var relation = App.currentTask.relation('owners');
+                    relation.add(result);
+                    App.currentTask.set('shared', true);
+                    App.currentTask.save();
+                    App.instances.viewShareTask.success();
+                },
+                error: function (error) {
+                    messageDiv.html('<i class="fa fa-exclamation-circle"></i> ' + error.message);
+                }
+            }));
+        },
+
+        deleteTask: function () {
+            App.currentTask.destroy({
+                success: function () {
+                    App.removeEditPanel();
+                }
+            })
         },
 
         getCurrentEmail: function () {

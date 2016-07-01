@@ -63,14 +63,15 @@ define(['backbone',
             },
 
             showUserName: function () {
+                var userName = ParseService.getUserName();
                 this.$el
                     .find('#current-user')
-                    .html(Parse.User.current().get('username'));
+                    .html(userName);
             },
 
             logOut: function () {
                 this.collection.reset();
-                Parse.User.logOut();
+                ParseService.logOut();
                 this.$el
                     .find('#task-list')
                     .empty()
@@ -95,31 +96,26 @@ define(['backbone',
                     return;
                 }
 
-                var self = this;
-                newTask.save({title: newTaskTitle}, {
-                    success: function () {
-                        self.$el
-                            .find('#add-task')
-                            .trigger('reset')
-                            .end()
-                            .find('.message')
-                            .empty();
-                        self.collection.add(newTask);
-                    },
-                    error: function (model, error) {
-                        self.$el
-                            .find('.message')
-                            .html('<i class="fa fa-exclamation-circle"></i> ' + error)
-                            .end()
-                            .find('.task-title')
-                            .focus();
-                    }
-                });
-                if (newTaskTitle) {
-                    var relation = newTask.relation('owners');
-                    relation.add(Parse.User.current());
-                    newTask.save();
-                }
+                ParseService.addTask(newTask, newTaskTitle);
+            },
+
+            addingSuccess : function (newTask) {
+                this.$el
+                    .find('#add-task')
+                    .trigger('reset')
+                    .end()
+                    .find('.message')
+                    .empty();
+                this.collection.add(newTask);
+            },
+
+            addingError : function (error) {
+                this.$el
+                    .find('.message')
+                    .html('<i class="fa fa-exclamation-circle"></i> ' + error)
+                    .end()
+                    .find('.task-title')
+                    .focus();
             },
 
             getCompletedArr: function () {

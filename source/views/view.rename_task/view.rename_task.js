@@ -1,4 +1,10 @@
-define(['backbone', 'text!templates/rename_task.html'], function (Backbone, renameTaskTemplate) {
+define(['backbone',
+    'services/parse.service',
+    'text!templates/rename_task.html'
+],
+    function (Backbone,
+              ParseService,
+              renameTaskTemplate) {
 
     var ViewRenameTask = Backbone.View.extend({
         id: 'rename-panel',
@@ -34,20 +40,20 @@ define(['backbone', 'text!templates/rename_task.html'], function (Backbone, rena
                 return;
             }
 
-            var self = this;
-            App.currentTask.save({title: newTaskTitle}, {
-                success: function () {
-                    self.$el
-                        .addClass('done')
-                        .find('.message')
-                        .html('Done!');
-                },
-                error: function (model, error) {
-                    self.$el
-                        .find('.message')
-                        .html('<i class="fa fa-exclamation-circle"></i> ' + error);
-                }
-            });
+            ParseService.saveTask(newTaskTitle);
+        },
+        
+        success: function () {
+            this.$el
+                .addClass('done')
+                .find('.message')
+                .html('Done!');
+        },
+        
+        error: function (errMess) {
+            this.$el
+                .find('.message')
+                .html('<i class="fa fa-exclamation-circle"></i> ' + errMess);
         },
 
         cancel: function () {
