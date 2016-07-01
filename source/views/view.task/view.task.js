@@ -7,7 +7,7 @@ define(['backbone',
               taskTemplate) {
 
         var ViewTask = Backbone.View.extend({
-            className: 'task',
+            el: '<li class="task">',
 
             events: {
                 'click .task-label': 'check',

@@ -150,15 +150,19 @@ label[for='check-all'], label[for='check-all'] .fa-check-square-o {
 }
 
 .task-title {
-    /*font-size: 20px;*/
     width: 70%;
 }
 
 .task {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
     left: 0;
     padding: 5px 0;
+    height: 45px;
+    max-height: 300%;
     font-size: 20px;
     border-bottom: 1px dashed darkslategrey;
     transition: all 1.5s linear;
@@ -167,26 +171,18 @@ label[for='check-all'], label[for='check-all'] .fa-check-square-o {
 .task.remove {
     overflow: hidden;
     opacity: 0;
-    font-size: 0;
+    height: 0;
     left: 50%;
 }
-.task-checkbox {
-    position: absolute;
-    float: left;
-    top: 50%;
-    margin-top: -0.5em
+
+.task-info {
+    display: flex;
+    justify-content: flex-start;
 }
+
 .task-label {
-    float: left;
-    margin: 7px 40px 0 30px;
+    margin-left: 5px;
     word-break: break-all;
-}
-.task-edit {
-    position: absolute;
-    right: 0;
-    float: right;
-    top: 50%;
-    margin-top: -0.8em;
 }
 
 input[type=checkbox]  {
